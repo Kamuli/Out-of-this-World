@@ -1,5 +1,5 @@
 //
-//  OWViewController.h
+//  OWOuterSpaceTableViewController.h
 //  Out Of This World
 //
 //  Created by Juha Näppi on 11.9.2014.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OWViewController : UIViewController
+@interface OWOuterSpaceTableViewController : UITableViewController
 
 @end
