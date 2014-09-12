@@ -9,6 +9,8 @@
 #import "OWOuterSpaceTableViewController.h"
 #import "AstronomicalData.h"
 #import "OWSpaceObject.h"
+#import "OWSpaceImageViewController.h"
+#import "OWSpaceDataViewController.h"
 
 @interface OWOuterSpaceTableViewController ()
 
@@ -57,14 +59,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return [self.planets count];
 }
@@ -89,6 +89,12 @@
     return cell;
 }
 
+#pragma mark UITableView Delegate
+
+-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"push to space data" sender:indexPath];
+}
 
 /*
 // Override to support conditional editing of the table view.
@@ -128,15 +134,37 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    if ([sender isKindOfClass:[UITableViewCell class]])
+    {
+       if ([segue.destinationViewController isKindOfClass:[OWSpaceImageViewController class]])
+       {
+           OWSpaceImageViewController *nextViewController = segue.destinationViewController;
+           NSIndexPath *path = [self.tableView indexPathForCell:sender];
+           //index into our array of objects
+           OWSpaceObject *selectedObject = self.planets[path.row];
+           nextViewController.spaceObject = selectedObject;
+       }
+    }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+  
+    if ([sender isKindOfClass:[NSIndexPath class]])
+    {
+        if ([segue.destinationViewController isKindOfClass:[OWSpaceDataViewController class]])
+        {
+            OWSpaceDataViewController *targetViewController = segue.destinationViewController;
+            NSIndexPath *path = sender;
+            OWSpaceObject *selectedObject = self.planets[path.row];
+            targetViewController.spaceObject = selectedObject;
+        }
+    }
 }
-*/
+
 
 @end
