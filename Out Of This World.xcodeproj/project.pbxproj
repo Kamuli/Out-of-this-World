@@ -158,8 +158,6 @@
 				973A8EDB19C1A4AF009363AF /* OWOuterSpaceTableViewController.m */,
 				97833AA119C325A500AAAD34 /* OWSpaceDataViewController.h */,
 				97833AA219C325A500AAAD34 /* OWSpaceDataViewController.m */,
-				973A8EF419C1DE91009363AF /* OWSpaceObject.h */,
-				973A8EF519C1DE91009363AF /* OWSpaceObject.m */,
 				973A8EBD19C1A3AE009363AF /* Images.xcassets */,
 				973A8EAC19C1A3AE009363AF /* Supporting Files */,
 			);
@@ -169,6 +167,8 @@
 		973A8EAC19C1A3AE009363AF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				973A8EF419C1DE91009363AF /* OWSpaceObject.h */,
+				973A8EF519C1DE91009363AF /* OWSpaceObject.m */,
 				973A8EE019C1DDF3009363AF /* Earth.jpg */,
 				973A8EE119C1DDF3009363AF /* EinsteinRing.jpg */,
 				973A8EE219C1DDF3009363AF /* Jupiter.jpg */,

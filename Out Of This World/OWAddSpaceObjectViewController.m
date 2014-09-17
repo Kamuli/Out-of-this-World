@@ -48,9 +48,25 @@
 }
 */
 
-- (IBAction)cancelButtonPressed:(UIButton *)sender {
+- (IBAction)cancelButtonPressed:(UIButton *)sender{
+    [self.delegate didCancel];
 }
 
 - (IBAction)addButtonPressed:(UIButton *)sender {
+    OWSpaceObject *newSPaceObject = [self returnNewSpaceObject];
+    [self.delegate addSpaceObject:newSPaceObject];
 }
+
+-(OWSpaceObject*)returnNewSpaceObject {
+    OWSpaceObject *addedSpaceObject = [[OWSpaceObject alloc] init];
+    addedSpaceObject.name = self.nameTextField.text;
+    addedSpaceObject.nickname = self.nicknameTextField.text;
+    addedSpaceObject.diameter = [self.diameterTextField.text floatValue];
+    addedSpaceObject.temperature = [self.temperatureTextField.text floatValue];
+    addedSpaceObject.numberOfMoons = [self.numberOfMoonsTextField.text intValue];
+    addedSpaceObject.interestFact = self.interstingFactTextField.text;
+    addedSpaceObject.spaceImage = [UIImage imageNamed:@"Einsteinring.jpg"];
+    return addedSpaceObject;
+}
+
 @end
